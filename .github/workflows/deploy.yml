@@ -33,7 +33,6 @@ env:
   GITEE_DESTINATION_REPO: git@gitee.com:wbsu2003/wbsu2003.git
 
 jobs:
-  job1:
     build:
       name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
       runs-on: ubuntu-latest
