@@ -45,15 +45,14 @@ jobs:
       steps:
         - name: Checkout 
           uses: actions/checkout@v2
-          with:
-            ref: main
+    
 
         - name: Checkout deploy repo
           uses: actions/checkout@v2
           with:
             repository: ${{ env.GIT_DEPLOY_REPO }}
             ref: ${{ env.GIT_DEPLOY_BRANCH }}
-            
+            path: .deplotgit
 
         - name: Use Node.js ${{ matrix.node_version }}
           uses: actions/setup-node@v1
