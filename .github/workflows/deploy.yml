@@ -68,8 +68,8 @@ jobs:
             echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
             chmod +wr ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-            git config --global user.name ${{env.GIT_USER}}
-            git config --global user.email ${{env.GIT_EMAIL}}
+            git config  user.name ${{env.GIT_USER}}
+            git config  user.email ${{env.GIT_EMAIL}}
         - name: Install dependencies
           run: |
             npm install hexo-cli -g
