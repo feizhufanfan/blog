@@ -51,7 +51,7 @@ jobs:
           with:
             repository: ${{ env.GIT_DEPLOY_REPO }}
             ref: ${{ env.GIT_DEPLOY_BRANCH }}
-            # path: .deploy_git
+            path: .deploy_git
 
         - name: Use Node.js ${{ matrix.node_version }}
           uses: actions/setup-node@v1
@@ -69,7 +69,7 @@ jobs:
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             git config --global user.name ${{env.GIT_USER}}
             git config --global user.email ${{ env.GIT_EMAIL }}
-            
+
         - name: Install dependencies
           run: |
             npm install hexo-cli -g
