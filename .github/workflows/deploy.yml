@@ -73,7 +73,6 @@ jobs:
             # ssh-keyscan -t rsa gitee.com >> ~/.ssh/known_hosts
             git config --global user.name $GIT_USER
             git config --global user.email $GIT_EMAIL
-
         - name: Install dependencies
           run: |
             npm install hexo-cli -g
@@ -82,7 +81,7 @@ jobs:
             npm uninstall hexo-generator-index --save
             npm install hexo-baidu-url-submit hexo-generator-index2 hexo-symbols-count-time hexo-blog-encrypt hexo-deployer-git --save
             # 复制中文语言包，解决菜单英文的问题
-            cp zh-CN.yml node_modules/hexo-theme-next/languages/
+            #cp zh-CN.yml node_modules/hexo-theme-next/languages/
 
         - name: Deploy hexo
           run: |
