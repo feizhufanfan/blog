@@ -65,10 +65,10 @@ jobs:
           run: |
             sudo timedatectl set-timezone "Asia/Shanghai"
             mkdir -p ~/.ssh/
-            echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
+            sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
             chmod +wr ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-            git config --global user.name ${{env.GIT_USER}}
+            git config --global user.name ${{ env.GIT_USER}}
             git config --global user.email ${{ env.GIT_EMAIL }}
 
         - name: Install dependencies
