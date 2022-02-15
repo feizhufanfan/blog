@@ -81,8 +81,8 @@ jobs:
         
         - name: Deploy Blog
           run: |
-            hexo g
-            hexo d 
+            hexo generate
+            hexo deploy 
         
         # # 以下为发布到gitee
         # - name: Sync to Gitee
