@@ -107,6 +107,7 @@ jobs:
             ssh-add ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             hexo generate
+            mkdir -p .deploy_git
             echo "feizhufanfan.tk" > .deploy_git/CNAME
             hexo deploy 
         
