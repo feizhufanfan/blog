@@ -47,8 +47,8 @@ jobs:
           uses: actions/checkout@v2
           with:
             path: ".deploy_git"
-
-        - runs: |
+        - name: 查看文件
+          run: |
             ls -ll
 
         # - name: Checkout deploy repo
