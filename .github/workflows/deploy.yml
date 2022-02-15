@@ -44,7 +44,7 @@ jobs:
 
       steps:
         - name: Checkout Blog Src
-          uses: actions/checkout@v1
+          uses: actions/checkout@v2
 
 
         - name: 查看文件
@@ -107,6 +107,7 @@ jobs:
             ssh-add ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             hexo generate
+            echo "feizhufanfan.tk" > .deploy_git/CNAME
             hexo deploy 
         
         # # 以下为发布到gitee
