@@ -35,7 +35,7 @@ env:
 jobs:
     build:
       name: Build on node ${{ matrix.node_version }} and ${{ matrix.os }}
-      runs-on: ubuntu-latest
+      runs-on: ubuntu-18.04
       if: github.event.repository.owner.id == github.event.sender.id
       strategy:
         matrix:
@@ -90,10 +90,9 @@ jobs:
             chmod 600 ~/.ssh/id_rsa
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa
-           
-            npm install hexo-cli hexo -g
-            npm install hexo-deployer-git --save
-             hexo
+            npm config set registry http://registry.npm.taobao.org/
+            npm install 
+            hexo
             hexo version
             ls -ll
             cat package.json
