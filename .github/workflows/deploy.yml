@@ -45,7 +45,7 @@ jobs:
       steps:
         - name: Checkout Blog Src
           uses: actions/checkout@v2
-          run: echo "$(pwd)"
+
 
     
 
@@ -60,8 +60,7 @@ jobs:
           uses: actions/setup-node@v1
           with:
             node-version: ${{ matrix.node_version }}
-          run: |
-            echo "Use Node.js 当前运行的目录 $(pwd)"
+        
 
 
         - name: Configuration environment
