@@ -14,7 +14,7 @@ env:
   # Hexo 编译后使用此 git 用户部署到 github 仓库
   GIT_USER: feizhufanfan
   # Hexo 编译后使用此 git 邮箱部署到 github 仓库
-  GIT_EMAIL: "1009963012@qq.com"
+  GIT_EMAIL: 1009963012@qq.com
   # Hexo 编译后要部署的 github 仓库
   GIT_DEPLOY_REPO: feizhufanfan/feizhufanfan.github.io
   # Hexo 编译后要部署到的分支
