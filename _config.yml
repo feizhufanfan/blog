@@ -100,8 +100,8 @@ ignore:
 theme: hexo-theme-next
 
 # Deployment
-## Docs: https://hexo.io/docs/one-command-deployment
-# deploy:
-#   type: git
-#   repo: git@github.com:feizhufanfan/feizhufanfan.github.io.git
-#   branch: main
+# Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: git
+  repo: git@github.com:feizhufanfan/feizhufanfan.github.io.git
+  branch: main
