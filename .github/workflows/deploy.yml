@@ -16,21 +16,21 @@ env:
   # Hexo 编译后使用此 git 邮箱部署到 github 仓库
   GIT_EMAIL: 1009963012@qq.com
   # Hexo 编译后要部署的 github 仓库
-  GIT_DEPLOY_REPO: feizhufanfan/feizhufanfan.github.io
-  # Hexo 编译后要部署到的分支
-  GIT_DEPLOY_BRANCH: main
+  # GIT_DEPLOY_REPO: feizhufanfan/feizhufanfan.github.io
+  # # Hexo 编译后要部署到的分支
+  # GIT_DEPLOY_BRANCH: main
   
-  # Hexo 编译后使用此 gitee 用户部署到gitee仓库
-  GITEE_USER: wbsu2003
-  # Hexo 编译后要部署的 gitee 仓库
-  GITEE_DEPLOY_REPO: wbsu2003/wbsu2003
-  # Hexo 编译后要部署到的分支
-  GITEE_DEPLOY_BRANCH: master
+  # # Hexo 编译后使用此 gitee 用户部署到gitee仓库
+  # GITEE_USER: wbsu2003
+  # # Hexo 编译后要部署的 gitee 仓库
+  # GITEE_DEPLOY_REPO: wbsu2003/wbsu2003
+  # # Hexo 编译后要部署到的分支
+  # GITEE_DEPLOY_BRANCH: master
   
-  # 注意替换为你的 GitHub 源仓库地址
-  GIT_SOURCE_REPO: git@github.com:feizhufanfan/feizhufanfan.github.io.git
-  # 注意替换为你的 Gitee 目标仓库地址
-  GITEE_DESTINATION_REPO: git@gitee.com:wbsu2003/wbsu2003.git
+  # # 注意替换为你的 GitHub 源仓库地址
+  # GIT_SOURCE_REPO: git@github.com:feizhufanfan/feizhufanfan.github.io.git
+  # # 注意替换为你的 Gitee 目标仓库地址
+  # GITEE_DESTINATION_REPO: git@gitee.com:wbsu2003/wbsu2003.git
 
 jobs:
     build:
