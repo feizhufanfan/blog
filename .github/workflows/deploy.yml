@@ -45,6 +45,8 @@ jobs:
       steps:
         - name: Checkout Blog Src
           uses: actions/checkout@v2
+          with:
+            path: ".deploy_git"
 
 
     
