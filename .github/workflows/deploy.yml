@@ -90,10 +90,14 @@ jobs:
             chmod 600 ~/.ssh/id_rsa
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa
+           
+
             npm install hexo-cli -g
             npm install hexo-deployer-git --save
-            npm install
-            ls 
+             hexo
+            hexo version
+            ls -ll
+            cat package.json
             npm run build
             npm run deploy 
 
