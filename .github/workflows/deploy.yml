@@ -89,6 +89,7 @@ jobs:
             npm install hexo-cli  -g
             npm install
             hexo
+            hexo clean
     
 
         
@@ -107,9 +108,9 @@ jobs:
             ssh-add ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             hexo generate
-            mkdir -p .deploy_git
-            echo "feizhufanfan.tk" > .deploy_git/CNAME
-            hexo deploy 
+            echo "feizhufanfan.tk" > public/CNAME
+            hexo deploy
+            
         
         # # 以下为发布到gitee
         # - name: Sync to Gitee
