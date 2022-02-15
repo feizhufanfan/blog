@@ -94,12 +94,12 @@ jobs:
             npm config set registry http://registry.npm.taobao.org/
             cd .deploy_git
             npm install -g hexo@5.0.0
-            hexo
-            hexo version
-            ls -ll
-            cat package.json
-            hexo g
-            hexo d 
+          # hexo
+          # hexo version
+          # ls -ll
+          # cat package.json
+          # hexo g
+          # hexo d 
 
 
         #     npm run build
