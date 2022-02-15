@@ -18,7 +18,7 @@ env:
   # Hexo 编译后要部署的 github 仓库
   GIT_DEPLOY_REPO: feizhufanfan/feizhufanfan.github.io
   # Hexo 编译后要部署到的分支
-  GIT_DEPLOY_BRANCH: master
+  GIT_DEPLOY_BRANCH: main
   
   # Hexo 编译后使用此 gitee 用户部署到gitee仓库
   GITEE_USER: wbsu2003
