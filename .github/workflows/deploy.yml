@@ -97,6 +97,8 @@ jobs:
           # cp zh-CN.yml node_modules/hexo-theme-next/languages/
         
         - name: Deploy Blog
+          env:
+            BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
           run: |
             mkdir -p ~/.ssh/
             sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
