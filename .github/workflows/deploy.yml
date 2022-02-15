@@ -43,11 +43,10 @@ jobs:
           node_version: [16.14.0]
 
       steps:
-        - uses: actions/checkout@v2
-        - run: |
-            ls -al
-
-        
+        - name: Checkout Blog Src
+          uses: actions/checkout@v2
+          with:
+            path: ".deploy_git"
 
 
     
@@ -92,14 +91,14 @@ jobs:
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa
             npm config set registry http://registry.npm.taobao.org/
-            cd .deploy_git
-            npm install -g hexo@5.0.0
-          # hexo
-          # hexo version
-          # ls -ll
-          # cat package.json
-          # hexo g
-          # hexo d 
+            cd ..
+            npm install -g 
+            hexo
+            hexo version
+            ls -ll
+            cat package.json
+            hexo g
+            hexo d 
 
 
         #     npm run build
