@@ -45,8 +45,8 @@ jobs:
       steps:
         - name: Checkout Blog Src
           uses: actions/checkout@v2
-          with:
-            path: main
+          run: echo "$(pwd)"
+
     
 
         # - name: Checkout deploy repo
@@ -60,33 +60,38 @@ jobs:
           uses: actions/setup-node@v1
           with:
             node-version: ${{ matrix.node_version }}
+          run: |
+            echo "Use Node.js 当前运行的目录 $(pwd)"
 
 
-        # - name: Configuration environment
-        #   env:
-        #     BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
-        #   run: |
-        #     sudo timedatectl set-timezone "Asia/Shanghai"
-        #     mkdir -p ~/.ssh/
-        #     sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
-        #     chmod 600 ~/.ssh/id_rsa
-        #     eval  eval $(ssh-agent)
-        #     ssh-add ~/.ssh/id_rsa
-        #     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-        #     git config --global user.name ${{ env.GIT_USER}}
-        #     git config --global user.email ${{ env.GIT_EMAIL }}
-        # - name: Install dependencies
-        #   env:
-        #     BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
-        #   run: |
-        #     mkdir -p ~/.ssh/
-        #     sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
-        #     chmod 600 ~/.ssh/id_rsa
-        #     eval  eval $(ssh-agent)
-        #     ssh-add ~/.ssh/id_rsa
-        #     npm install hexo-cli -g
-        #     npm install hexo-deployer-git --save
-        #     npm install
+        - name: Configuration environment
+          env:
+            BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
+          run: |
+            echo "Configuration environment 当前运行的目录 $(pwd)"
+            sudo timedatectl set-timezone "Asia/Shanghai"
+            mkdir -p ~/.ssh/
+            sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            eval  eval $(ssh-agent)
+            ssh-add ~/.ssh/id_rsa
+            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+            git config --global user.name ${{ env.GIT_USER}}
+            git config --global user.email ${{ env.GIT_EMAIL }}
+        
+        - name: Install dependencies
+          env:
+            BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
+          run: |
+            echo "Configuration environment 当前运行的目录 $(pwd)"
+            mkdir -p ~/.ssh/
+            echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            eval  eval $(ssh-agent)
+            ssh-add ~/.ssh/id_rsa
+            npm install hexo-cli -g
+            npm install hexo-deployer-git --save
+            npm install
 
         #     npm run build
         #     npm run deploy
