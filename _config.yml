@@ -104,4 +104,4 @@ theme: hexo-theme-next
 deploy:
   type: git
   repository: git@github.com:feizhufanfan/feizhufanfan.github.io.git
-  branch: main
+  branch: master

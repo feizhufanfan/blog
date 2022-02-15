@@ -52,7 +52,7 @@ jobs:
           with:
             repository: ${{ env.GIT_DEPLOY_REPO }}
             ref: ${{ env.GIT_DEPLOY_BRANCH }}
-            path: .deplotgit
+          
 
         - name: Use Node.js ${{ matrix.node_version }}
           uses: actions/setup-node@v1
@@ -65,9 +65,10 @@ jobs:
           run: |
             sudo timedatectl set-timezone "Asia/Shanghai"
             mkdir -p ~/.ssh/
-            echo "key :  $BLOG_HEXO_PRIVATE_KEY"
             sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
-            sudo chmod a+wr ~/.ssh/id_rsa
+            chmod 600 ~/.ssh/id_rsa
+            eval  eval $(ssh-agent)
+            ssh-add ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             git config --global user.name ${{ env.GIT_USER}}
             git config --global user.email ${{ env.GIT_EMAIL }}
@@ -80,7 +81,8 @@ jobs:
         
         - name: Deploy Blog
           run: |
-            npm run deploy
+            hexo g
+            hexo d 
         
         # # 以下为发布到gitee
         # - name: Sync to Gitee
