@@ -44,7 +44,7 @@ jobs:
 
       steps:
         - name: Checkout Blog Src
-          uses: actions/checkout@v2
+          uses: actions/checkout@v1
 
 
         - name: 查看文件
