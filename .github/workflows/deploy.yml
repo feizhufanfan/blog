@@ -90,8 +90,8 @@ jobs:
             chmod 600 ~/.ssh/id_rsa
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa
-            npm config set registry http://registry.npm.taobao.org/
-            cd ..
+          #npm config set registry http://registry.npm.taobao.org/
+            
             npm install -g hexo@5.0.0
             npm install -g hexo-cli
             hexo
@@ -99,9 +99,12 @@ jobs:
             ls -ll
             cat package.json
             hexo g
+            cd ..
             hexo d 
 
-
+        - name : “日志查看”
+          run: |
+            cat /home/runner/.npm/_logs/2022-02-15T09_02_27_376Z-debug-0.log
         #     npm run build
         #     npm run deploy
           # cp zh-CN.yml node_modules/hexo-theme-next/languages/
