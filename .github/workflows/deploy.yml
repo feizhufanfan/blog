@@ -91,6 +91,9 @@ jobs:
             npm install hexo-cli -g
             npm install hexo-deployer-git --save
             npm install
+            hexo generate
+            hexo deploy 
+
 
         #     npm run build
         #     npm run deploy
