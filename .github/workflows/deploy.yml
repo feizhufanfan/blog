@@ -81,6 +81,7 @@ jobs:
           env:
             BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
           run: |
+            ls -ll
             echo "Configuration environment 当前运行的目录 $(pwd)"
             mkdir -p ~/.ssh/
             echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
