@@ -61,34 +61,35 @@ jobs:
           with:
             node-version: ${{ matrix.node_version }}
 
-        - name: Configuration environment
-          env:
-            BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
-          run: |
-            sudo timedatectl set-timezone "Asia/Shanghai"
-            mkdir -p ~/.ssh/
-            sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            eval  eval $(ssh-agent)
-            ssh-add ~/.ssh/id_rsa
-            ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-            git config --global user.name ${{ env.GIT_USER}}
-            git config --global user.email ${{ env.GIT_EMAIL }}
-        - name: Install dependencies
-          env:
-            BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
-          run: |
-            mkdir -p ~/.ssh/
-            sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
-            chmod 600 ~/.ssh/id_rsa
-            eval  eval $(ssh-agent)
-            ssh-add ~/.ssh/id_rsa
-            npm install hexo-cli -g
-            npm install hexo-deployer-git --save
-            npm install
 
-            npm run build
-            npm run deploy
+        # - name: Configuration environment
+        #   env:
+        #     BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
+        #   run: |
+        #     sudo timedatectl set-timezone "Asia/Shanghai"
+        #     mkdir -p ~/.ssh/
+        #     sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
+        #     chmod 600 ~/.ssh/id_rsa
+        #     eval  eval $(ssh-agent)
+        #     ssh-add ~/.ssh/id_rsa
+        #     ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+        #     git config --global user.name ${{ env.GIT_USER}}
+        #     git config --global user.email ${{ env.GIT_EMAIL }}
+        # - name: Install dependencies
+        #   env:
+        #     BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
+        #   run: |
+        #     mkdir -p ~/.ssh/
+        #     sudo echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
+        #     chmod 600 ~/.ssh/id_rsa
+        #     eval  eval $(ssh-agent)
+        #     ssh-add ~/.ssh/id_rsa
+        #     npm install hexo-cli -g
+        #     npm install hexo-deployer-git --save
+        #     npm install
+
+        #     npm run build
+        #     npm run deploy
           # cp zh-CN.yml node_modules/hexo-theme-next/languages/
         
         # - name: Deploy Blog
