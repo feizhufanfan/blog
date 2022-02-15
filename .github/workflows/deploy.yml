@@ -45,6 +45,8 @@ jobs:
       steps:
         - name: Checkout 
           uses: actions/checkout@v2
+          with:
+            ref: main
     
 
         - name: Checkout deploy repo
@@ -77,12 +79,15 @@ jobs:
             npm install hexo-cli -g
             npm install hexo-deployer-git --save
             npm install
+
+            npm run build
+            npm run deploy
           # cp zh-CN.yml node_modules/hexo-theme-next/languages/
         
-        - name: Deploy Blog
-          run: |
-            hexo generate
-            hexo deploy 
+        # - name: Deploy Blog
+        #   run: |
+        #     hexo generate
+        #     hexo deploy 
         
         # # 以下为发布到gitee
         # - name: Sync to Gitee
