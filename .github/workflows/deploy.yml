@@ -45,8 +45,6 @@ jobs:
       steps:
         - name: Checkout Blog Src
           uses: actions/checkout@v2
-          with:
-            path: ".deploy_git"
 
 
         - name: 查看文件
@@ -87,15 +85,14 @@ jobs:
           env:
             BLOG_HEXO_PRIVATE_KEY: ${{secrets.BLOG_HEXO_PRIVATE_KEY}}
           run: |
-            ls -ll
             echo "Configuration environment 当前运行的目录 $(pwd)"
             mkdir -p ~/.ssh/
             echo "$BLOG_HEXO_PRIVATE_KEY" > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa  
-            npm install hexo-cli -g
-            cd .deploy_git
+            npm install hexo-cli  -g
+           
             hexo
     
 
@@ -104,10 +101,10 @@ jobs:
         #     npm run deploy
           # cp zh-CN.yml node_modules/hexo-theme-next/languages/
         
-        # - name: Deploy Blog
-        #   run: |
-        #     hexo generate
-        #     hexo deploy 
+        - name: Deploy Blog
+          run: |
+            hexo generate
+            hexo deploy 
         
         # # 以下为发布到gitee
         # - name: Sync to Gitee
