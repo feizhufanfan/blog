@@ -92,15 +92,8 @@ jobs:
             ssh-add ~/.ssh/id_rsa
           #npm config set registry http://registry.npm.taobao.org/
             
-            npm install -g hexo@5.0.0
-            npm install -g hexo-cli
-            hexo
-            hexo version
-            ls -ll
-            cat package.json
-            hexo g
-            cd ..
-            hexo d 
+            npm install
+    
 
         - name : “日志查看”
           run: |
