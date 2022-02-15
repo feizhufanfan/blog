@@ -62,7 +62,7 @@ jobs:
           
 
         - name: Use Node.js ${{ matrix.node_version }}
-          uses: actions/setup-node@v1
+          uses: actions/setup-node@v2
           with:
             node-version: ${{ matrix.node_version }}
         
@@ -95,6 +95,7 @@ jobs:
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa  
             npm install hexo-cli -g
+            cd .deploy_git
             hexo
     
 
