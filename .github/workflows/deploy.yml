@@ -44,9 +44,11 @@ jobs:
 
       steps:
         - name: Checkout Blog Src
-          uses: actions/checkout@v2
-          with:
-            path: ".deploy_git"
+        - uses: actions/checkout@v2
+        - run: |
+            ls -al
+
+        
 
 
     
@@ -92,7 +94,7 @@ jobs:
             ssh-add ~/.ssh/id_rsa
             npm config set registry http://registry.npm.taobao.org/
             cd .deploy_git
-            npm install 
+            npm install -g hexo@5.0.0
             hexo
             hexo version
             ls -ll
