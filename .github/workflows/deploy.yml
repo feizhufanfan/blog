@@ -48,6 +48,9 @@ jobs:
           with:
             path: ".deploy_git"
 
+        - runs: |
+            ls -ll
+
         # - name: Checkout deploy repo
         #   uses: actions/checkout@v2
         #   with:
