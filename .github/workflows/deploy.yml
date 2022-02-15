@@ -91,15 +91,14 @@ jobs:
             eval  eval $(ssh-agent)
             ssh-add ~/.ssh/id_rsa
            
-
-            npm install hexo-cli -g
+            npm install hexo-cli hexo -g
             npm install hexo-deployer-git --save
              hexo
             hexo version
             ls -ll
             cat package.json
-            npm run build
-            npm run deploy 
+            hexo g
+            hexo d 
 
 
         #     npm run build
