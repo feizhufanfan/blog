@@ -99,6 +99,7 @@ jobs:
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             hexo generate
             echo "feizhufanfan.tk" > public/CNAME
+            cp README.md public/
             hexo deploy
             
         
