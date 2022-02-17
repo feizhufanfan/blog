@@ -117,7 +117,7 @@ darkmode: true
 # External url should start with http:// or https://
 menu:
   主页: / || fa fa-home
-  关于: /about/ || fa fa-user
+#  关于: /about/ || fa fa-user
   标签: /tags/ || fa fa-tags
   类别: /categories/ || fa fa-th
   归档: /archives/ || fa fa-archive
