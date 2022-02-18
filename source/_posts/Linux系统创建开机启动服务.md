@@ -20,3 +20,7 @@ tags:
     uname -a
     ```
     ![uname -a](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220218161322.png)
+
+
+## 测试
+![测试](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220218161758.png)
