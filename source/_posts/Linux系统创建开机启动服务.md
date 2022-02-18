@@ -9,6 +9,8 @@ tags:
 - 开机自启
 - Ubuntu/Debian
 - CentOS/UOS
+- update-rc.d
+- chkconfig
 ---
 # linux下如何创建开机自启服务
 ## 背景
