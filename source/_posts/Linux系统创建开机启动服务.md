@@ -21,6 +21,168 @@ tags:
     ```
     ![uname -a](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220218161322.png)
 
+## Ubuntu、Debain
+1. 首先编写开机启动脚本,内容模板如下:  
+    `vim demo_server`
+    ```sh
+    #!/bin/bash
+    # Provides: 自启服务的名称
+    # Default-Start:     2 3 4 5      
+    # Default-Stop:      S 0 1 6
+    # description: 服务的描述
+    servername=demoServer
+    serverdir=/opt/demoServer
+    binpath=/opt/demoServer/demoServer.sh
 
-## 测试
-![测试](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220218161758.png)
+    prog=$(basename $binpath)
+    . /etc/init.d/functions
+
+    restart() {undefined
+        stop
+        start
+    }
+    reload() {undefined
+        stop
+        start
+    }
+    start() {undefined
+    echo -n $"Starting $daemon:"
+        daemon $binpath start
+        retval=$?
+        echo
+        [ $retval -eq 0 ]
+    }
+
+    stop() {undefined
+    echo -n $"Stopping $daemon:"
+        daemon $binpath stop
+        retval=$?
+        echo
+        [ $retval -eq 0 ]
+    }
+
+    ha_status() {undefined
+        #status $prog
+        status $prog
+        ps -ef|grep $prog && exit 0
+    }
+
+    case "$1" in
+
+        start)
+        $1
+        ;;
+        stop)
+        $1
+        ;;
+        reload)
+        $1
+        ;;
+        restart)
+        $1
+        ;;
+        status)
+        ha_status
+        ;;
+        *)
+        echo "Usage:$0 {start|stop|reload|restart|status}"
+        exit 1
+    esac
+    ```
+2. 将编写好服务脚本复制到`/etc/init.d`目录下，`sudo cp demoServer /etc/init.d/`
+3. 赋予脚本运行权限`sudo chmod +x /etc/init,d/demoServer`
+4. 将脚本加入系统的开机启动服务并设置启动优先级，`sudo update-rc.d demoServer defaults 90`   #优先级0~90 数字越小优先级越高优先执行
+5. 查看服务列表`sudo service --status-all`
+6. 服务的控制命令:
+   ```sh
+   sudo service xxx status #查看服务状态
+   sudo service xxx start  #启动服务
+   sudo service xxx stop   #停止服务
+   sudo service xxx restart #重启服务
+   ```
+7. 服务的停止与移除  
+   `sudo update-rc.d  demoServer disable|enable`  
+   `sudo update-rc.d -f demoServer remove`
+## CentOS7~8/UOSServer
+1. 编写开机脚本demoServer  
+   `vim demoServer`
+   ```sh
+    #!/bin/bash
+    #chkconfig:2345 90 60
+    # Default-Start:     2 3 4 5
+    # Default-Stop:      S 0 1 6
+    # description: Saves and restores system entropy pool for \ 
+    # higher quality random number generation
+    servername=myservice
+    serverdir=/opt/myservice
+    binpath=/opt/myservice/myservice.sh
+
+    prog=$(basename $binpath)
+    . /etc/init.d/functions
+
+    restart() {undefined
+        stop
+        start
+    }
+    reload() {undefined
+        stop
+        start
+    }
+    start() {undefined
+    echo -n $"Starting $daemon:"
+        daemon $binpath start
+        retval=$?
+        echo
+        [ $retval -eq 0 ]
+    }
+
+    stop() {undefined
+    echo -n $"Stopping $daemon:"
+        daemon $binpath stop
+        retval=$?
+        echo
+        [ $retval -eq 0 ]
+    }
+
+    ha_status() {undefined
+        #status $prog
+        status $prog
+        ps -ef|grep $prog && exit 0
+    }
+
+    case "$1" in
+
+        start)
+        $1
+        ;;
+        stop)
+        $1
+        ;;
+        reload)
+        $1
+        ;;
+        restart)
+        $1
+        ;;
+        status)
+        ha_status
+        ;;
+        *)
+        echo "Usage:$0 {start|stop|reload|restart|status}"
+        exit 1
+    esac
+   ```
+    - 服务脚本配置说明  
+      #chkconfig:2345 90 60    #2345代表着启动的系统层级rc0~rc5，90 代表服务的启动等级越大表示服务越靠后，60 表示服务关闭时的等级越大越晚执行。
+      ##chkconfig:2345 90 60这句话时CentOS、UOSServer系统使用chkconfig服务配置启动服务检查的数据段。必须要在脚本里面。
+    - 脚本参照[链接](https://blog.csdn.net/zjy900507/article/details/82699694)
+2. 复制脚本到/etc/init.d目录`sudo cp demoServe /etc/init.d/`
+3. 赋予脚本运行权限`sudo chmod +x demoServer`
+4. 加入系统开机启动服务`sudo chkconfig --add demoServe`
+5. 启动服务`sudo chkconfig demoServer on`
+6. 服务的停止与移除  
+   ```sh
+   sudo chkconfig demoServer on|off
+   sudo chkconfig --del demoServer
+   ```
+
