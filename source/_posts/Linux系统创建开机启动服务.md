@@ -92,10 +92,14 @@ tags:
         exit 1
     esac
     ```
-2. 将编写好服务脚本复制到`/etc/init.d`目录下，`sudo cp demoServer /etc/init.d/`
-3. 赋予脚本运行权限`sudo chmod +x /etc/init,d/demoServer`
-4. 将脚本加入系统的开机启动服务并设置启动优先级，`sudo update-rc.d demoServer defaults 90`   #优先级0~90 数字越小优先级越高优先执行
-5. 查看服务列表`sudo service --status-all`
+2. 将编写好服务脚本复制到`/etc/init.d`目录下  
+   `sudo cp demoServer /etc/init.d/`
+3. 赋予脚本运行权限  
+   `sudo chmod +x /etc/init.d/demoServer`
+4. 将脚本加入系统的开机启动服务并设置启动优先级  
+   `sudo update-rc.d demoServer defaults 90`   #优先级0~90 数字越小优先级越高优先执行
+5. 查看服务列表  
+   `sudo service --status-all`
 6. 服务的控制命令:
    ```sh
    sudo service xxx status #查看服务状态
@@ -179,10 +183,14 @@ tags:
       #chkconfig:2345 90 60    #2345代表着启动的系统层级rc0~rc5，90 代表服务的启动等级越大表示服务越靠后，60 表示服务关闭时的等级越大越晚执行。
       ##chkconfig:2345 90 60这句话时CentOS、UOSServer系统使用chkconfig服务配置启动服务检查的数据段。必须要在脚本里面。
     - 脚本参照[链接](https://blog.csdn.net/zjy900507/article/details/82699694)
-2. 复制脚本到/etc/init.d目录`sudo cp demoServe /etc/init.d/`
-3. 赋予脚本运行权限`sudo chmod +x demoServer`
-4. 加入系统开机启动服务`sudo chkconfig --add demoServe`
-5. 启动服务`sudo chkconfig demoServer on`
+2. 复制脚本到/etc/init.d目录  
+   `sudo cp demoServe /etc/init.d/`
+3. 赋予脚本运行权限  
+   `sudo chmod +x demoServer`
+4. 加入系统开机启动服务  
+   `sudo chkconfig --add demoServe`
+5. 启动服务  
+   `sudo chkconfig demoServer on`
 6. 服务的停止与移除  
    ```sh
    sudo chkconfig demoServer on|off
