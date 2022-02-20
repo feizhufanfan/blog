@@ -3,9 +3,9 @@ title: JetsonNano配置
 date: 2022-02-16 14:21:39
 categories:
 - linux
-- "Jetson Nano"
+- jetson Nano
 tags: 
-- "jetson Nano"
+- jetson Nano
 - arm64
 - aarch64交叉编译工具链
 ---
