@@ -30,8 +30,9 @@ jetson Nano镜像安装完成之后，准备实现自己的番茄计划。在项
    插上设备后可以看到新增加了一个`ttyUSB0`的串口设备  
    ![插上设备](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219190317.png)  
 
-   然后将USB-TTL的RX，TX接到Nano的8、10引脚
-   ![](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220226210806.png)
+   然后将USB-TTL的RX，TX接到Nano的8、10引脚  
+   ![jetson Nano](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220226210741.png)  
+  
 
 2. 对串口设备（文件）赋予读写权限
    主机上  
