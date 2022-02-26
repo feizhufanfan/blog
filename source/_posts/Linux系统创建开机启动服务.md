@@ -26,78 +26,38 @@ tags:
 
 ## Ubuntu、Debain
 1. 首先编写开机启动脚本,内容模板如下:  
-    `vim demo_server`
-    ```sh
-    #!/bin/bash
-    # Provides: 自启服务的名称
-    # Default-Start:     2 3 4 5      
-    # Default-Stop:      S 0 1 6
-    # description: 服务的描述
-    servername=demoServer
-    serverdir=/opt/demoServer
-    binpath=/opt/demoServer/demoServer.sh
-
-    prog=$(basename $binpath)
-    . /etc/init.d/functions
-
-    restart() {undefined
-        stop
-        start
-    }
-    reload() {undefined
-        stop
-        start
-    }
-    start() {undefined
-    echo -n $"Starting $daemon:"
-        daemon $binpath start
-        retval=$?
-        echo
-        [ $retval -eq 0 ]
-    }
-
-    stop() {undefined
-    echo -n $"Stopping $daemon:"
-        daemon $binpath stop
-        retval=$?
-        echo
-        [ $retval -eq 0 ]
-    }
-
-    ha_status() {undefined
-        #status $prog
-        status $prog
-        ps -ef|grep $prog && exit 0
-    }
-
-    case "$1" in
-
-        start)
-        $1
-        ;;
-        stop)
-        $1
-        ;;
-        reload)
-        $1
-        ;;
-        restart)
-        $1
-        ;;
-        status)
-        ha_status
-        ;;
-        *)
-        echo "Usage:$0 {start|stop|reload|restart|status}"
-        exit 1
-    esac
-    ```
+   `vim demo_server`
+   ```sh
+   #!/bin/bash
+   # Provides: 自启服务的名称
+   # Default-Start:     2 3 4 5      
+   # Default-Stop:      S 0 1 6
+   # description: 服务的描述
+   demoServePath=xxxx/demoServer.sh
+   case "$1" in
+      start)
+      echo "启动应用"
+      sh $demoServePath
+      ;;
+      stop)
+      echo "结束应用"
+      killall $(basename $demoServePath)
+      ;;
+      *)
+      echo "Usage:$0 {start|stop|reload|restart|status}"
+      exit 1
+   esac
+   ```
 2. 将编写好服务脚本复制到`/etc/init.d`目录下  
    `sudo cp demoServer /etc/init.d/`
 3. 赋予脚本运行权限  
    `sudo chmod +x /etc/init.d/demoServer`
 4. 将脚本加入系统的开机启动服务并设置启动优先级  
-   `sudo update-rc.d demoServer defaults 90`   #优先级0~90 数字越小优先级越高优先执行
+   ```sh
+   cd /etc/init.d
+   sudo update-rc.d demoServer defaults 90`   #优先级0~90 数字越小优先级越高优先执行
+   ```  
+
 5. 查看服务列表  
    `sudo service --status-all`
 6. 服务的控制命令:
@@ -107,15 +67,17 @@ tags:
    sudo service xxx stop   #停止服务
    sudo service xxx restart #重启服务
    ```
-7. 服务的停止与移除  
-   `sudo update-rc.d  demoServer disable|enable`  
-   `sudo update-rc.d -f demoServer remove`
+7. 服务的停止与移除 
+   ```sh 
+   sudo update-rc.d  demoServer disable|enable  
+   sudo update-rc.d -f demoServer remove
+   ```
 ## CentOS7~8/UOSServer
 1. 编写开机脚本demoServer  
    `vim demoServer`
    ```sh
     #!/bin/bash
-    #chkconfig:2345 90 60
+    # chkconfig:2345 90 60
     # Default-Start:     2 3 4 5
     # Default-Stop:      S 0 1 6
     # description: Saves and restores system entropy pool for \ 
@@ -125,17 +87,16 @@ tags:
     binpath=/opt/myservice/myservice.sh
 
     prog=$(basename $binpath)
-    . /etc/init.d/functions
 
-    restart() {undefined
+    restart() {
         stop
         start
     }
-    reload() {undefined
+    reload() {
         stop
         start
     }
-    start() {undefined
+    start() {
     echo -n $"Starting $daemon:"
         daemon $binpath start
         retval=$?
@@ -143,7 +104,7 @@ tags:
         [ $retval -eq 0 ]
     }
 
-    stop() {undefined
+    stop() {
     echo -n $"Stopping $daemon:"
         daemon $binpath stop
         retval=$?
@@ -151,7 +112,7 @@ tags:
         [ $retval -eq 0 ]
     }
 
-    ha_status() {undefined
+    ha_status() {
         #status $prog
         status $prog
         ps -ef|grep $prog && exit 0

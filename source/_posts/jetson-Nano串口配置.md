@@ -31,7 +31,7 @@ jetson Nano镜像安装完成之后，准备实现自己的番茄计划。在项
    ![插上设备](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219190317.png)  
 
    然后将USB-TTL的RX，TX接到Nano的8、10引脚
-   ![接线](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/1645269028149.jpg)
+   ![](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220226210806.png)
 
 2. 对串口设备（文件）赋予读写权限
    主机上  
@@ -60,7 +60,7 @@ jetson Nano镜像安装完成之后，准备实现自己的番茄计划。在项
    Nano往`/dev/ttyTHS1`里写入数据。主机往`/dev/ttyUSB0`里读取数据，  
    ![Nano发给主机](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219232003.png)  
 
-哈哈哈，主机也收到了数据。这就表示我们之前的想法时对了。那么实现C++的串口收发还会有什么问题吗。就是文件读写。这里我就不pro出代码了，后续会放到仓库里。
+哈哈哈，主机也收到了数据。这就表示我们之前的想法是对了。那么实现C++的串口收发还会有什么问题吗。就是文件读写。这里我就不pro出代码了，后续会放到仓库里。
 
 
 
