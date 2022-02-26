@@ -18,7 +18,7 @@ jetson Nano镜像安装完成之后，准备实现自己的番茄计划。在项
 # 资源查找
 原本我以为jetson Nano想要输出PWM波就像树莓派使用`Pi.GPIO`库一样只要配置好引脚然后设置频率和占空比就可以舒舒服服的使用PWM了。  
 结果我去官网查找资料的时候看到这么一段话  
-这里贴上原文的[链接}(https://github.com/NVIDIA/jetson-gpio/blob/master/README.md)  
+这里贴上原文的[链接](https://github.com/NVIDIA/jetson-gpio/blob/master/README.md)  
 The Jetson.GPIO library supports PWM only on pins with attached hardware PWM controllers. Unlike the RPi.GPIO library, the Jetson.GPIO library does not implement Software emulated PWM  
 这句话就是说jetson Nano有一个PWM硬件控制器支持2通道输出，并且不支持RPI.GPIO的软件模拟输出。  
 什么居然直接支持硬件层面的支持，哇塞~ 狂喜，但只有两路还不支持软件模拟有点可惜。
