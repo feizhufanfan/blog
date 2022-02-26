@@ -1,5 +1,6 @@
 ---
 title: Hello hexo
+date: 2015-02-16 14:21:39
 categories:
 - Web开发相关
 - Hexo 博客搭建
