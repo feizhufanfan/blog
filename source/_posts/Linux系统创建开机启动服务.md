@@ -61,20 +61,29 @@ tags:
    `sudo chmod +x /etc/init.d/demoServer`  
 
 4. 将脚本加入系统的开机启动服务并设置启动优先级（这里有两种方式）  
+   ```sh
+   cd /etc/init.d
+   #方式一只设定启动的优先级但不设置运行的系统级别
+   sudo update-rc.d demoServer defaults 90 #优先级0~90 数字越小优先级越高优先执行
+   #方式二设定启动的优先级同时设定运行的基本，或设定关机时运行的级别
+   sudo update-rc.d demoServer start 90 2 3 4 5 #stop 60 0 1 6
+   ```
 
 5. 启动开机服务脚本  
    `sudo update-rc.d demoServer enable`
 
 6. 查看服务列表  
    `sudo service --status-all`
-7. 服务的控制命令:
+7. 服务的控制命令: 
+
    ```sh
    sudo service xxx status #查看服务状态
    sudo service xxx start  #启动服务
    sudo service xxx stop   #停止服务
    sudo service xxx restart #重启服务
    ```  
-8. 服务的停止与移除  
+8. 服务的停止与移除
+
    ```sh 
    sudo update-rc.d  demoServer disable|enable  
    sudo update-rc.d -f demoServer remove
