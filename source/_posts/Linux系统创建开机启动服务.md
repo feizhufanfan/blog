@@ -60,7 +60,7 @@ tags:
 3. 赋予脚本运行权限  
    `sudo chmod +x /etc/init.d/demoServer`  
 
-4. 将脚本加入系统的开机启动服务并设置启动优先级（这里有两种方式）  
+4. 将脚本加入系统的开机启动服务并设置启动优先级(这里有两种方式)
    ```sh
    cd /etc/init.d
    #方式一只设定启动的优先级但不设置运行的系统级别
@@ -74,20 +74,19 @@ tags:
 
 6. 查看服务列表  
    `sudo service --status-all`
-7. 服务的控制命令: 
-
+7. 服务的控制命令
    ```sh
    sudo service xxx status #查看服务状态
    sudo service xxx start  #启动服务
    sudo service xxx stop   #停止服务
    sudo service xxx restart #重启服务
-   ```  
-8. 服务的停止与移除
+   ```
 
-   ```sh 
+8. 服务的停止与移除
+   ```sh
    sudo update-rc.d  demoServer disable|enable  
    sudo update-rc.d -f demoServer remove
-   ```  
+   ```
 
 ## CentOS7~8/UOSServer
 1. 编写开机脚本demoServer  
@@ -136,7 +135,6 @@ tags:
     }
 
     case "$1" in
-
         start)
         $1
         ;;
@@ -170,7 +168,7 @@ tags:
    `sudo chkconfig --add demoServe`
 5. 启动服务  
    `sudo chkconfig demoServer on`
-6. 服务的停止与移除  
+6. 服务的停止与移除
    ```sh
    sudo chkconfig demoServer on|off
    sudo chkconfig --del demoServer

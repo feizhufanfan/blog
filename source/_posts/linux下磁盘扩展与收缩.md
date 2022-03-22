@@ -33,4 +33,41 @@ tags:
 + PE（Physical Extent）- 物理块
 
 ## 磁盘扩展
-1. 对于需要扩展的分区 
+1. 对于需要扩展的分区
+    首先创建物理磁盘分区  
+    `sudo fdisk /dev/sdx  #sdx新挂载的盘物理磁盘创建分区`  
+    格式化文件系统  
+    `sudo mkfs.ext4 /dev/sdxX`
+    创建物理卷  
+    `pvcreate /dev/sdxX #sdx新挂载的物理磁盘 X磁盘分区号   可以同时创建多个物理卷`  
+    扩展VG 把增加的分区添加到需要增加的分区
+    `vgextend xxx /dev/sdxX`
+    分区空间合并  
+    `lvextend -L +64G xxx /dev/sdxX #xxx待合并的文件目录（分区）`
+    开启合并  
+    `xfs_growfs xxx #xxx带扩展目录或分区`
+
+## 磁盘收缩
+
+
+
+
+
+
+
+
+## 多分区挂载在同一个目录
+首先创建物理卷  
+`pvcreate /dev/sdx1 /dev/sdx2 /dev/sdxX`  
+创建VG组卷  
+`vgcreate lvm_extendDisk /dev/sdx1 /dev/sdx2 /dev/sdxX`  
+创建LV逻辑卷  
+`lvcreate -L 100G -n lvm_LVDkisk lvm_extendDisk`  
+挂载到目录  
+`mount /dev/mapper/lvm_LVDisk xxx  #待挂载的目录`  
+
+
+
+
+
+
