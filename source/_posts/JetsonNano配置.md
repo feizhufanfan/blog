@@ -24,10 +24,10 @@ tags:
 
 ## 解压工具链
 解压gcc-chain-tool得到一下文件
-![gcc-chain-tool](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219021907.png)
+![gcc-chain-tool](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219021907.png)
 
 解压文件系统fileSysytem得到以下文件
-![fileSysytem](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219015043.png)
+![fileSysytem](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219015043.png)
 
 
 ## 使用工具链编译项目  
@@ -59,14 +59,14 @@ tags:
     ```
     执行cmake构建Makefile文件
 
-    ![cmake](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219023707.png)
+    ![cmake](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219023707.png)
 
     编译文件  
     `make`
 
     查看编译好的可执行文件类型
 
-    ![file](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219023929.png)
+    ![file](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219023929.png)
 
     可以看出文件为aarch64的也就是在Nano上运行的执行文件
 
@@ -79,10 +79,10 @@ tags:
     ```
     启动cmake-gui  
     点击Configure配置工程选择最后一个交叉编译配置
-    ![Configure](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219024935.png)
+    ![Configure](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219024935.png)
 
     根据目标主机的类型填写系统类型，C/C++/fortran编译器在工具里找到并设置
-    ![setting](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219025130.png)
+    ![setting](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219025130.png)
 
     
     Target Root选择目标主机的运行环境，如果没有使用扩展库可以设定为工具链下的include目录  
@@ -92,14 +92,14 @@ tags:
     (tegra_linux_sample-root-filesystem_r32.6.1_aarch64/usr/include)
 
     其余参数如图所示
-    ![](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219030208.png)
+    ![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219030208.png)
 
     点击finish后在点击Generate生成Makefile文件  
-    ![](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219030427.png)
+    ![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219030427.png)
     关掉cmake-gui
 
     `make`
     
-    ![](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220219030617.png)
+    ![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220219030617.png)
 
     同样可以看出文件为aarch64的也是在Nano上运行的执行文件

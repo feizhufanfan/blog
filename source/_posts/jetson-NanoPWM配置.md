@@ -34,23 +34,23 @@ The system pinmux must be configured to connect the hardware PWM controlller(s) 
    ```sh
    sudo /opt/nvidia/jetson-io/jetson-io.py
    ```  
-   ![tools](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221001829.png)
+   ![tools](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221001829.png)
 
    回车进入引脚配置  
-   ![UI1](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221002034.png)
+   ![UI1](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221002034.png)
    有时候可能会显示不全，把终端窗口拉长一点就会显示出来了  
-   ![UI2](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221002141.png)  
+   ![UI2](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221002141.png)  
    这种情况也是我意外发现的，2333
 
    可以图中看到`32\33`引脚是作为PWM的输出引脚。  
    接下来使用方向键选择配置配置引脚
-   ![UI3](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221002523.png)  
+   ![UI3](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221002523.png)  
    回车进入界面进行配置，使用空格键进行选择.由于我这里已经选好了就`[]`里带有`*`的标识。  
-   ![UI4](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221002619.png)
+   ![UI4](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221002619.png)
    选好后返回上一界面选择`Save pin changes`  
-   ![UI5](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221003202.png) 
+   ![UI5](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221003202.png) 
    再选择`Save and exit without rebooting`这个选项。
-   ![UI6](https://gitee.com/feizudefanfan/feizhufanfan_image/raw/master/blog/20220221003336.png)  
+   ![UI6](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220221003336.png)  
    回车确认，即可完成PWM的输出引脚配置啦
 
 
