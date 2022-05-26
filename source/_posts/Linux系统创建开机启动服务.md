@@ -93,12 +93,12 @@ tags:
    `vim demoServer`
    ```sh
     #!/bin/bash
-    # chkconfig:2345 90 60
+    # chkconfig: 2345 90 60
     # Default-Start:     2 3 4 5
     # Default-Stop:      S 0 1 6
     # description: Saves and restores system entropy pool for \ 
     # higher quality random number generation
-    servername=myservice
+    servername=myservice #服务名称
     serverdir=/opt/myservice
     binpath=/opt/myservice/myservice.sh
 
