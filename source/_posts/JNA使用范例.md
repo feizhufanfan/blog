@@ -412,7 +412,7 @@ public class SDKLibrary{
 
 ```
 
-
+![项目结构](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230209154111.png)  
 ```java
 至此便可以调用C++的DLL库了
 //项目结构
@@ -421,10 +421,7 @@ public class SDKLibrary{
     ├─Resources
     │  └─DLL
     └─sdk
-```  
-![项目结构](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230209154111.png)
 
-```java
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("Hello world!");
