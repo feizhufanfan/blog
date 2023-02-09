@@ -11,11 +11,11 @@ tags:
 
 <h1 style="text-align:center;">JNA使用范例</h1>
 
-## JAVA、C++变量映射表  
+## JAVA、C++变量映射表
 ![JAVA/Native 变量类型转换](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230209134103.png)
 
 
-## 1. C++端程序示例生产DLL/SO库  
+##  C++端程序示例生产DLL/SO库
 导出函数公共头文件`CommonHead.h`
 ```C++
 #ifndef COMMONHEAD_H
@@ -46,11 +46,12 @@ tags:
 #define DLL_IMPORT_DECL extern
 #endif
 #endif
-
 #endif
-``` 
 
-### SDK头文件 `SDK.h`  
+```
+
+### SDK头文件`SDK.h`
+
 ```C++
 #ifndef SDK_H
 #define SDK_H
@@ -126,10 +127,11 @@ SDK_C_API void SDK_setC(void* SDKptr,TestStruct* c);
 
 SDK_C_API void Destroy_jna_SDK(void* SDKptr);
 #endif
-```  
 
-SDK文件 `SDK.cpp`  
-```C++
+```
+
+### SDK文件`SDK.cpp`
+```c++
 #define SDK_EXPORTS
 #define JNAEXPORTS
 #include "SDK.h"
@@ -189,13 +191,12 @@ void Destroy_jna_SDK(void *SDKptr) {
     delete _sdk;
     _sdk= nullptr;
 }
-```  
 
-## 2. 使用`jnaerator-0.12-shaded.jar`生产Java代码  
-```bash
-java -jar "$JAVA_HOME/jnaerator-0.12-shaded.jar" -runtime JNA -mode Directory -o SDk_JNA -f -library SDK Release/*.dll SDK/SDK.h
+```
 
-
+##  使用[jnaerator-0.12-shaded.jar](https://repo1.maven.org/maven2/com/nativelibs4java/jnaerator/0.12/)生产Java代码
+```sh
+java -jar "$JAVA_HOME/jnaerator-0.12-shaded.jar" -runtime JNA -mode Directory -o SDk_JNA -f -library SDK Release/*.dll SDK/SDK.h  
 Normalizing parsed code...
 Generating libraries...
 Generating TestStruct.java
@@ -215,11 +216,11 @@ Generating SDKLibrary.java
 │  └─win64
 └─sdk
 
-```  
 
-## 3. 在java项目中使用DLL  
+```
 
-修改生产的`SDKLibrary.java`文件  
+##  在java项目中使用DLL
+修改生产的`SDKLibrary.java`文件
 ```java
 //原内容：
 public interface SDKLibrary extends Library {
@@ -409,11 +410,13 @@ public class SDKLibrary{
 
 }
 
-
 ```
 
+
 ![项目结构](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230209154111.png)  
+
 ```java
+
 至此便可以调用C++的DLL库了
 //项目结构
 ├─lib
@@ -438,9 +441,4 @@ public class Main {
     }
 }
 
-``` 
-
-
-
-
-
+```
