@@ -26,6 +26,8 @@ public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
+technology_dir: technology
+life_dir: life
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -93,6 +95,13 @@ pagination_dir: page
 include:
 exclude:
 ignore:
+
+
+excerpt:
+  depth: 4  #按层来算，也就是按代码块来算
+  excerpt_excludes: []
+  more_excludes: []
+  hideWholePostExcerpts: true
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
