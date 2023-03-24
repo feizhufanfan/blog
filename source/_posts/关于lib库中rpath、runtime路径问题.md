@@ -10,10 +10,11 @@ tags:
 
 
 
-## RPATH问题
-    在linux环境中有时候有些so库在运行时依赖于其他第三方库，但在windows下系统会优先查找`System32`、`System`等系统目录。
-    在这些目录下都没有相关依赖库时会去扫描当前`DLL`运行目录下是包含依赖的`DLL`,而在linux环境中系统优先扫描`LD_LIBRARY_PATH`、`/etc/ld.so.conf`等路径
-    在这些路径下都没有最后会去执行生产SO库时的`INSTALL_RPATH`路径。
+## RPATH问题  
+
+在linux环境中有时候有些so库在运行时依赖于其他第三方库，但在windows下系统会优先查找`System32`、`System`等系统目录。
+在这些目录下都没有相关依赖库时会去扫描当前`DLL`运行目录下是包含依赖的`DLL`,而在linux环境中系统优先扫描`LD_LIBRARY_PATH`、`/etc/ld.so.conf`等路径
+在这些路径下都没有最后会去执行生产SO库时的`INSTALL_RPATH`路径。
 
 
 ## 解决因路径问题导致第三方依赖库在同级目录下无法加载的问题
