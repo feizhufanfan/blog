@@ -7,3 +7,4 @@ public/
 .deploy*/
 themes/hexo-theme-next/.github
 _config.landscape.yml
+.idea/
