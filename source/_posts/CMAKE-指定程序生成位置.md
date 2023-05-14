@@ -2,7 +2,7 @@
 title: CMAKE-指定程序生成位置
 date: 2023-05-14 19:38:44
 - CMAKE
-- library
+- set_target_properties
 tags:
 - CMAKE
 - 
