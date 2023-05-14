@@ -6,6 +6,7 @@ categories:
 - library
 tags:
 - linux
+- CMAKE
 ---
 
 
