@@ -1,11 +1,11 @@
 ---
 title: CMAKE-指定程序生成位置
 date: 2023-05-14 19:38:44
+categories:
 - CMAKE
 - set_target_properties
 tags:
 - CMAKE
-- 
 ---
 
 # 关于CMAKE在生成可执行文件的位置设定
