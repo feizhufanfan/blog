@@ -22,7 +22,7 @@ set_target_properties(${PROJECT_NAME} #目标名称
 ```
 
 ## 注意：
-在Windows下时使用MSVC编译生成目标位置时会自动添加`${CMAKE_BUILD_TYPE}`使得输出位置与其他编译器有所差异，因此需要对编程类型做出判断
+在Windows下时使用MSVC编译生成目标位置时会自动添加`${CMAKE_BUILD_TYPE}`使得输出位置与其他编译器有所差异，因此需要对编译器做出判断
 如下:
 ``` sh
 if(${CMAKE_GENERATOR} MATCHES "Visual Studio*")
