@@ -223,11 +223,56 @@ EM_PORT_API(float) add(float a, float b) {
 ```
 使用emcc编译导出
 ```sh
-
 emcc DLL.cpp -o DLL.js
+```  
+
+在CMAKE中使用编译命令
+
+```sh
+
+set(EXPORTED_FUNCTIONS "_doWork,_main,_myFunction")
+add_custom_target(
+        ${PROJECT_NAME}.js
+        COMMAND ${EMSDK_HOME}/emsdk activate latest
+        COMMAND  ${EMSDK_HOME}/emsdk_env.bat
+        COMMAND  ${EMSDK_HOME}/upstream/emscripten/emcc.bat   ${CMAKE_SOURCE_DIR}/wasmlibdemo/main.cpp
+      #  -std=c++11
+       # -s USE_PTHREADS=1
+        -s WASM=1
+        -s EXPORTED_FUNCTIONS="${EXPORTED_FUNCTIONS}"
+        -s EXPORTED_RUNTIME_METHODS="['ccall']"
+     #  -s RESERVED_FUNCTION_POINTERS=14
+     #   -s TOTAL_MEMORY=131072000
+      #  -s USE_SDL=2
+        -o demoWasm.js
+)
 
 ```
-创建页面测试
+## 说明:
+导出函数使用`EXPORTED_FUNCTIONS`与`EMSCRIPTEN_KEEPALIVE`的差异：  
+1. EMSCRIPTEN_KEEPALIVE 导出符号：这是一种标记函数的宏，用于告诉编译器将该函数保留为导出函数。通过在函数声明前添加 EMSCRIPTEN_KEEPALIVE 宏，可以确保该函数被包含在编译后的 WebAssembly 模块中，并能够从 JavaScript 中访问到。
+```sh
+
+#include <emscripten.h>
+
+EMSCRIPTEN_KEEPALIVE
+int myFunction(int param) {
+    // 函数的实现
+    return param + 1;
+}
+
+```  
+使用 EMSCRIPTEN_KEEPALIVE 标记的函数将被自动导出，不需要额外的配置或命令行选项。这种方法适用于简单的导出函数场景。  
+
+2. EXPORTED_FUNCTIONS 定义导出函数：这是一种通过配置 Emscripten 构建系统来明确指定要导出的函数的方法。通过在构建命令中添加 EXPORTED_FUNCTIONS 选项或编写一个 .txt 文件来指定要导出的函数列表。  
+```sh
+emcc mycode.cpp -o mymodule.js -s EXPORTED_FUNCTIONS="['_myFunction']"
+```  
+这种方法允许您精确控制导出的函数，并且可以一次性导出多个函数。您可以在构建时使用 EXPORTED_FUNCTIONS 选项定义导出函数，也可以将其写入一个文本文件，然后使用 -s EXPORTED_FUNCTIONS_FILE 选项指定该文件。
+
+
+
+创建页面测试  
 ```html
 <!doctype html>
 
@@ -252,3 +297,16 @@ emcc DLL.cpp -o DLL.js
 
 
 
+## 注意:
+在 WebAssembly（Wasm）中处理 C++ 中的线程涉及一些特定的技术和策略。由于 Wasm 的单线程限制，Wasm 本身并不直接支持多线程。但是，可以使用一些技术来模拟线程行为或利用 Web Workers 来实现并发性。
+下面是两种常见的处理方法：
+1. 方法一
+基于单线程的模拟：
+- 使用异步编程模型：基于单线程的异步编程模型可以替代多线程。通过将耗时的操作分解成小任务，并使用事件轮询或回调函数进行调度，可以实现并发性和异步性。
+- 使用协程：协程是一种轻量级的线程替代方案，它允许在同一个线程中创建多个独立的执行上下文。通过协程库，例如 Boost.Coroutine 或 Coroutine TS，可以实现协程以模拟线程行为。
+- 使用定时器和分片：如果任务可以细分为小的计算单元，可以使用定时器和分片技术来模拟线程行为。在每个时间片中执行一小部分任务，然后切换到下一个任务。
+
+2. 方法二
+使用 Web Workers:
+- Web Workers 是浏览器提供的一种机制，可以在后台运行脚本，并发地处理任务。您可以将 C++ 代码转换为 JavaScript，并将其作为 Web Worker 使用。通过将工作分配给不同的 Web Workers，您可以实现基于多个线程的并发性。
+- 可以使用 Emscripten 的 Pthreads 支持将 C++ 线程代码转换为 WebAssembly，并将其封装在 Web Worker 中。
