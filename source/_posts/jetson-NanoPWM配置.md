@@ -2,7 +2,7 @@
 title: jetson NanoPWM配置
 date: 2022-02-19 23:27:57
 categories:
-- linux
+- Linux
 - jetson Nano
 tags:
 - PWM

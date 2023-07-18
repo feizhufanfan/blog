@@ -2,7 +2,7 @@
 title: jetson Nano串口配置
 date: 2022-02-19 17:39:48
 categories:
-- linux
+- Linux
 - jetson Nano
 tags:
 - UART
