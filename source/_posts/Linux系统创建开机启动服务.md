@@ -2,10 +2,10 @@
 title: Linux系统创建开机启动服务
 date: 2022-02-18 13:37:01
 categories:
-- linux
+- Linux
 - 开机自启服务
 tags:
-- linux
+- Linux
 - 开机自启
 - Ubuntu/Debian
 - CentOS/UOS
