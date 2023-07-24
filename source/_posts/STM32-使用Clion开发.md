@@ -7,6 +7,7 @@ categories:
 tags:
 - STM32
 - Clion
+- 番茄计划
 ---
 
 <h1 align="center">使用CLion优雅の开发STM32</h1>
