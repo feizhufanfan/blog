@@ -80,8 +80,18 @@ tags:
 在`rtconfig.h`文件中将`#include "finsh_config.h"` 注释放开
 ![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230724180024.png)
 
-- 
-
+- 出现`error: unknown type name ’UART_HandleTypeDef‘`错误
+出现改错误是在创建工程项目时，没有启用串口组件导致的。在RT-Thread中默认使用`Usart1`作为`shell`控制台的输出。
+解决办法：
+启用Usart组件。
+![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230725093909.png)
+补充说明：
+由于在启用Usart组件，RT-Thread中会被重复定义，因此需要对代码做出部分修改。
+首先在`borad.c`文件中将`Usart2`改为`Usart1`。
+![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230725094757.png)
+在`void rt_hw_board_init(void)`函数实现的上面声明一个`static int uart_init(void);`,然后在`rt_hw_board_init`函数内部的` HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/RT_TICK_PER_SECOND); `位置新增`uart_init`的调用。
+![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230725095423.png)
+在`main.c`文件中找到`main`函数取消其中`MX_USART1_UART_Init`函数的调用。
 
 
 
