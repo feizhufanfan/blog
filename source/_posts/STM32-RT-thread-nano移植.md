@@ -3,10 +3,10 @@ title: STM32-RT-thread nano移植
 date: 2023-07-24 16:47:18
 categories:
 - STM32
-- RT-Thread nano移植
+- RT-Thread-nano移植
 tags:
 - STM32 
-- RT-Thread nano
+- RT-Thread-nano
 ---
 
 # STM32移植RT-Thread Nano
