@@ -5,8 +5,8 @@ categories:
 - STM32
 - RT-Thread nano移植
 tags:
--STM32 
--RT-Thread nano
+- STM32 
+- RT-Thread nano
 ---
 
 # STM32移植RT-Thread Nano
