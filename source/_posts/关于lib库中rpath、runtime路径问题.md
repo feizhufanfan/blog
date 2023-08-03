@@ -20,12 +20,16 @@ tags:
 
 ## 解决因路径问题导致第三方依赖库在同级目录下无法加载的问题
     在CMake中设置生产SO/DLL库时，运行路径或者编译安装路径。
-    ``` CMakeLists
+
+    ```
+    
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,$ORIGIN:./:.")
     set(CMAKE_SKIP_RPATH FALSE)
     set(CMAKE_SKIP_BUILD_RPATH TRUE)
     set(CMAKE_SKIP_INSTALL_RPATH TRUE)
+
     ```  
+
     注释：$ORIGIN 为编译系统当中的环境变量，能够设置当前运行的库路径的相对路径值。
 
 
