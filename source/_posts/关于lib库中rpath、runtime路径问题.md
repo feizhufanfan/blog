@@ -3,7 +3,7 @@ title: 关于lib库中rpath、runtime路径问题
 date: 2023-03-24 14:52:59
 categories:
 - CMAKE
-- set_target_properties
+- rpath、runtime
 tags:
 - CMAKE
 ---
