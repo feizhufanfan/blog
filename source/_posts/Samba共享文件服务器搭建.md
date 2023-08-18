@@ -74,6 +74,20 @@ sudo restart nmbd
 
 ```
 
+# 辅助命令
+``` bash
+# 查看samba用户列表
+pdbedit -L
+ 
+# 对samba用户进行管理（用户已经在系统中创建）
+smbpasswd -h  #查看支持的命令列表
+ 
+# 异常时可查看日志情况
+cat /var/log/samba/log.%m
+
+```
+
+
 ## 补充：如需开启匿名访问
 ``` bash
 
