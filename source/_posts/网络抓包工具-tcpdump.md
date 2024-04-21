@@ -24,7 +24,8 @@ tags:
 `tcpdump -i eth0 -vnn port 22`
 8. 抓取指定协议格式的数据包，协议格式可以是「udp,icmp,arp,ip」中的任何一种,例如以下命令  
 `tcpdump udp  -i eth0 -vnn`
-
+9. 抓取指定时间的数据包  
+`tcpdump -i eth0 -G 60 -W 1 -w output.pcap`
 
 
 
