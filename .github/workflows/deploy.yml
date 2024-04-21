@@ -98,7 +98,7 @@ jobs:
             ssh-add ~/.ssh/id_rsa
             ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
             hexo generate
-            echo "feizhufanfan.top" > public/CNAME
+            echo "blog.feizhufanfan.top" > public/CNAME
             cp README.md public/
             hexo deploy
             
