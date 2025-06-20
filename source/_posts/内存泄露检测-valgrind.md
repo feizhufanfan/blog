@@ -2,7 +2,7 @@
 title: 内存泄露检测--valgrind
 date: 2023-12-22 17:45:32
 categories:
-- Linux
+- linux
 - valgrind
 tags:
 - 内存泄露检测

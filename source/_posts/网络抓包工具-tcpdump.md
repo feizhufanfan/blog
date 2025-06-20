@@ -2,7 +2,7 @@
 title: 网络抓包工具--tcpdump
 date: 2023-11-03 09:17:44
 categories:
-- Linux
+- linux
 - Tcpdump
 tags:
 - 网络抓包工具

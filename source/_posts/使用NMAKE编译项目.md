@@ -2,7 +2,7 @@
 title: 使用MSBuild编译VS项目
 date: 2023-08-21 17:17:03
 categories:
-- Visual Studio
+- Visual_Studio
 - MSBuild
 tags:
 - MSBuild
@@ -14,10 +14,10 @@ tags:
 
 
 ## 打开VS兼容命令行
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230821172431.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230821172431.png)
 
 ## 切换到项目所在位置
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230821172625.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230821172625.png)
 ``` bash
 
 cd /d F:\Workspace\C++_Project\ormpp\build
@@ -34,5 +34,5 @@ MSBuild MyApp.sln -t:Rebuild  -p:Configuration=Release
 -t：                指定目标的行为(Rebuild、Clean、build)
 
 ```
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230821180326.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230821180326.png)
 

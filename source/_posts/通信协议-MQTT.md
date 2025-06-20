@@ -59,7 +59,7 @@ node_keepalive 60
 
 
 ```
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230825145440.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230825145440.png)
 
 ## 部署
 `./sbin/mosquitto -c ./etc/mosquitto/mosquitto.conf &`
@@ -71,14 +71,14 @@ node_keepalive 60
 
 ## 安装完成之后启动软件 
 新建连接并填入对于的MQTT服务器地址
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230825150100.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230825150100.png)
 
 ## 测试消息
 新增订阅消息类型
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230825150248.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230825150248.png)
 
 发布消息
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230825150347.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230825150347.png)
 
 测试通过
 

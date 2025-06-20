@@ -1,11 +1,11 @@
 ---
-title: Linux系统创建开机启动服务
+title: linux系统创建开机启动服务
 date: 2022-02-18 13:37:01
 categories:
-- Linux
+- linux
 - 开机自启服务
 tags:
-- Linux
+- linux
 - 开机自启
 - Ubuntu/Debian
 - CentOS/UOS
@@ -23,7 +23,7 @@ tags:
     ```sh
     uname -a
     ```
-    ![uname -a](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20220218161322.png)
+    ![uname -a](http://feizhufanfan.top:18088/minio/images/blog/20220218161322.png)
 
 ## Ubuntu、Debain
 1. 首先编写开机启动脚本,内容模板如下:  

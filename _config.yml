@@ -26,8 +26,7 @@ public_dir: public
 tag_dir: tags
 archive_dir: archives
 category_dir: categories
-technology_dir: technology
-life_dir: life
+life_dir: categories/随笔
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:

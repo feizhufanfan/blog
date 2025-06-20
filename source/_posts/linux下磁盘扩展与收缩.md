@@ -2,11 +2,11 @@
 title: linux下磁盘扩展与收缩
 date: 2022-03-02 14:18:56
 categories:
-- Linux
+- linux
 - 磁盘管理
 tags:
 - lvm2
-- Linux
+- linux
 ---
 
 <h1 align="center">磁盘扩展与收缩</h1>

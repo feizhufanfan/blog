@@ -28,9 +28,9 @@ Use -board help or -mcu help to list supported boards or devices!
 
 # 在Clion中配置相关参数
 在Clion中的`Debug Configuration`中添加添加`Remote Debug`
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718000701.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718000701.png)
 如图填入相应参数：
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718001025.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718001025.png)
 其中`Target Remote args`固定填写为`127.0.0.1:1234`
 
 
@@ -42,21 +42,21 @@ Use -board help or -mcu help to list supported boards or devices!
 - -s 冻结CPU，也就是等待调试器连接后才会开始运行
 - -M 选择开发板类型
 - --images 等待调试的程序 
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718002217.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718002217.png)
 
 接下来在CLion中选择我们刚刚创建的`Remote Debug`,然后选择点击`debug`按钮进入调试模式
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718002823.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718002823.png)
 
 在主函数打上断点。
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718003506.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718003506.png)
 可以看出已经成功进入断点。
 
 此时还未复位GPIOC13，LED为灭
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718004159.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718004159.png)
 执行GPIOC13复位后，LED为亮
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718004343.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718004343.png)
 再次执行复位操作后，LED为灭
-![](https://feizhufanfan.oss-cn-hangzhou.aliyuncs.com/blog/20230718004419.png)
+![](http://feizhufanfan.top:18088/minio/images/blog/20230718004419.png)
 
 由此可以判断出代码的逻辑。
 

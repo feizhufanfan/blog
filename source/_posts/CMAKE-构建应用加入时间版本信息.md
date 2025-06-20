@@ -3,7 +3,7 @@ title: CMAKE--构建应用加入时间版本信息
 date: 2023-11-17 11:32:15
 categories:
 - CMAKE
-- 获取时间、git版本信息
+- 获取时间-git版本信息
 tags:
 - CMAKE
 - add_custom_target
