@@ -23,7 +23,7 @@ tags:
     ```sh
     uname -a
     ```
-    ![uname -a](http://feizhufanfan.top:18088/minio/images/blog/20220218161322.png)
+    ![uname -a](http://blog.feizhufanfan.top:18088/minio/images/blog/20220218161322.png)
 
 ## Ubuntu、Debain
 1. 首先编写开机启动脚本,内容模板如下:  

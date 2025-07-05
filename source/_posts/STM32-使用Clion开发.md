@@ -26,128 +26,128 @@ tags:
 - `mingw64`安装配置
 1. 安装mingw64（如果通过其他方式已经安装好，可以跳过该小节）  
 
-![mingw64-gun-tool](http://feizhufanfan.top:18088/minio/images/blog/20230717144805.png)  
+![mingw64-gun-tool](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717144805.png)  
 这里先将添加到环境变量的选项去除稍后通过手动配置。
 等待安装完成。
 2. 配置`mingW64`到环境变量
 在系统环境变量里新建一个`GCC_HOME`，将MingW64的安装目录填入
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717145719.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717145719.png)
 然后在找到path
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717145933.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717145933.png)
 然后在末尾添加`%GCC_HOME%/bin`
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717150317.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717150317.png)
 3. 验证GCC是否安装成功
 按住'Ctrl'+'R'输入cmd，回车新建一个cmd窗口。输入命令`gcc -v`
 出现一下内容则表示安装成功
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717150445.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717150445.png)
 
 - `gcc-arm-none-eabi`安装配置
 1. 下载好的安装包解解压到想要安装的目录，这里以`E:\gcc-arm-none-eabi-9-2019-q4-major-win32`为例。**提示**安装目录路径中最好**不要**出现**空格**或者**中文**。
 2. 配置`gcc-arm-none-eabi`到环境变量
 在系统环境变量里新建一个`ARMGCC_HOME`，将安装路径填入
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717151600.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717151600.png)
 然后在找到path，在末尾添加一个`%ARMGCC_HOME%\bin`
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717151823.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717151823.png)
 3. 验证GCC是否安装成功
 按住'Ctrl'+'R'输入cmd，回车新建一个cmd窗口。输入命令`arm-none-eabi-gcc -v`
 出现一下内容则表示安装成功
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717151953.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717151953.png)
 
 至于其他安装的安装过程就省略啦。 软件安装搞开发的基本都没啥大问题是吧~ 帅比靓女们、
 
 # 配置CLion
 1. 打开CLion，回到最开始的首页点击自定义选择里面的全部设置。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717152642.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717152642.png)
 2. 选择插件/Plugins，确认里面的`Embedded MCU Development plugin`的插件是开启。 
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717153209.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717153209.png)
 3. 在`Build`中选择`Toolchain`，新建一个MinGW_ARM的工具链配置，将MINGw、GCC、G++、GDB配置到相应的安装目录
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717153711.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717153711.png)
 4. 在`BUild`中选择`Embedded Development`,在`openOCD`以及`STM32cubeMX`中填入对应的安装路径
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717154234.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717154234.png)
 5. 测试是否配置成功
 分别点击`openOCD`以及`STM32cubeMX`对于的Test，出现如图信息则表示配置成功。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717154507.png)  
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717154531.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717154507.png)  
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717154531.png)
 
 # STM32cubeMX配置
 1. 打开STM32cube，选择安装软件包
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717154916.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717154916.png)
 2. 根据自己的需要安装对应的软件包，这里我使用的事STM32F103系列的，选择STM32F1
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717155216.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717155216.png)
 3. 安装完成关闭整个cubeMX软件。
 
 
 # 建立测试工程
 1. 在CLion的选择新建项目，选择STM32cubeMX项目类型，选择项目建立位置。  **提示**记录该软件位置。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717155547.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717155547.png)
 2. 等待工程建立成功。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717155715.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717155715.png)
 3. 跳转到`STM32cubeMX`界面
 工程建立好了之后，点击`*.ioc`文件在编辑窗口里点击打开完成`STM32cubeMX`完成窗口的跳转。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717160052.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717160052.png)
 4. 配置`STM32开发板`的相关参数
 - 点击选择开发版
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717161145.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717161145.png)
 - 选择相应的芯片类型，这里以`STM32F103C6T6`为例
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717161358.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717161358.png)
 - 生成工程代码
 在引脚、时钟等配置好了之后点击`Project`,在工程名称填入之前Clion里创建工程的名称**切记保持名称一致**，然后在`Toolchain/IDE`里选择`STM32cubeIDE`。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717161831.png)  
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717161831.png)  
 
 接下来点击`CODE generator`在里面配置代码生成的项目细节，这里选择头文件分离。  
 
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717162229.png)  
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717162229.png)  
 
 
 
 最后点击`Generator Code`生成代码等待生成结束后。  
 
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717162514.png)  
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717162514.png)  
 
 在弹出的提示框里，选择yes  
 
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717162631.png)  
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717162631.png)  
 
 点击关闭按钮并关闭STM32cubeMX软件。
 
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717162723.png)  
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717162723.png)  
 
 
 5. 回到Clion里等待项目更新。
 在项目更新结束后，出现的弹框里选择跳过。因为后续我们需要对其进行重新配置。
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717162950.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717162950.png)
 
 最后这便是建立好的工程
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717163045.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717163045.png)
 # 编译
 为工程选择我们创建的`MinGW_ARM`工具链
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717172646.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717172646.png)
 
 点击编译按钮
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717163206.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717163206.png)
 等待结束
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717163322.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717163322.png)
 从编译提示框里可以看出已经从成功编译出`test.bin`、`test.elf`、`test.hex`。
 
 
 # 下载&烧录
 - 配置下载与烧录
 点击如图所示的位置
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717163756.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717163756.png)
 在弹出的窗口里选择添加一个`openOCD Download & Run`
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717163959.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717163959.png)
 在相应位置填入对应参数
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717164320.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717164320.png)
 在点击开发板配置文件时弹出的配置文件选择框里面选择一个接近的类型，我的板子为`STM32F103C6T6`因此选择了如图所示的类型。
 其实这个文件主要对应的是下载方式以及对应的Flash大小。这里选择这个配置文件是不用自己再去创建，通过这个文件去修改
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717165003.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717165003.png)
 选择应用之后，回到工程界面点击刚刚选择的配置文件
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717165425.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717165425.png)
 
 - 开发板下载烧录配置文件
 这里根据自己使用的下载器的实际情况选择以下两种
 1. 拼多多或者淘宝买  
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717170154.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717170154.png)
 ```
 # choose st-link/j-link/dap-link etc.
 adapter driver cmsis-dap
@@ -188,7 +188,7 @@ source [find target/stm32f1x.cfg]
 # download speed = 10MHz
 adapter speed 10000 
 ```
-![](http://feizhufanfan.top:18088/minio/images/blog/20230717171135.png)
+![](http://blog.feizhufanfan.top:18088/minio/images/blog/20230717171135.png)
 
 
 补充：
