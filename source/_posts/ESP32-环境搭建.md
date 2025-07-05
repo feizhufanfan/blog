@@ -39,20 +39,19 @@ tags:
   2. 创建bat文件`idfDevlopEnv5.3.bat`  
  
       内容如下:
-      ``` bat
-
+      ```bat
       set IDF_TOOLS_PATH=C:\Espressif
       @call C:\Espressif\python_env\idf5.3_py3.11_env\Scripts\activate.bat
       @call C:\Espressif\frameworks\esp-idf-v5.3.3\export.bat
-      @call C:\Espressif\idf_cmd_init.bat  
+      @call C:\Espressif\idf_cmd_init.bat
 
-      ```  
+      ```
 
   3. 在`C:\Espressif\python_env\idf5.3_py3.11_env\Scripts`在该路径下创建`activate.bat`文件。  
   
       内容如下:  
 
-      ``` bat  
+      ```bat
 
       @echo off
 
@@ -95,7 +94,7 @@ tags:
 
       set "PATH=%VIRTUAL_ENV%\Scripts;%PATH%"
       
-      ```  
+      ```
 
 
 
@@ -129,14 +128,15 @@ tags:
   ![](http://blog.feizhufanfan.top:18088/minio/images/blog/2025/07/05/20250705155428.png)  
 
   切换到需要创建工程的目录下，这里我以`F:\WorkSpace\ESP32`为例。
-  ``` shell
+  ```bat
   cd  F:\WorkSpace\ESP32
-  ```  
+  ```
+
   ![](http://blog.feizhufanfan.top:18088/minio/images/blog/2025/07/05/20250705155636.png)
 
 - 创建工程  
   
-  执行``命令创建工程  
+  执行`idf.py create-project HelloWolrd`命令创建工程  
   ![](http://blog.feizhufanfan.top:18088/minio/images/blog/2025/07/05/20250705155907.png)  
 
   在Clion中打开该工程目录并选择已经创建的编译工具链`Esp-Idf5.3`  
