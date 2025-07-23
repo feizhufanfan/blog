@@ -74,7 +74,6 @@ Spring支持三种主要的依赖注入方式：
     *   **与框架无关：** 构造器注入不依赖特定的注解（除了可选的`@Autowired`），是更纯粹的Java代码。
 *   **缺点：**
     *   如果依赖项很多，构造函数参数列表会很长，可能影响可读性（这时可能是类职责过多的信号，应考虑重构）。
-
 ### 2. Setter 注入（Setter Injection）
 *   **原理：** 通过类的**Setter方法**来注入依赖。Spring容器在调用无参构造函数（或工厂方法）创建Bean实例后，再调用相应的Setter方法来设置依赖。
 *   **实现方式：**
@@ -109,7 +108,7 @@ Spring支持三种主要的依赖注入方式：
 *   **缺点：**
     *   **对象状态可能不完整：** 在Setter方法被调用之前，对象可能处于依赖缺失的状态（部分注入）。如果其他方法在依赖未设置时被调用，会导致`NullPointerException`。
     *   **可变性：** 依赖字段通常不能设为`final`，意味着它们可能在对象生命周期中被改变（除非Setter方法有保护逻辑），这降低了线程安全性和状态稳定性。
-    *   **不如构造器注入明确：** 一个类可能有多个Setter方法，哪些依赖是必需的，哪些是可选的，不如构造器注入一目了然。   
+    *   **不如构造器注入明确：** 一个类可能有多个Setter方法，哪些依赖是必需的，哪些是可选的，不如构造器注入一目了然。     
 ### 3. 字段注入（Field Injection）
 *   **原理：** 直接在类的**字段（成员变量）** 上使用注解（如`@Autowired`）进行注入。Spring容器通过反射机制直接设置字段的值，不需要构造器或Setter方法。
 *   **实现方式：**
@@ -135,25 +134,25 @@ Spring支持三种主要的依赖注入方式：
     *   **隐藏依赖：** 依赖关系完全隐藏在类内部。从类的外部看（只看公共API如构造器和方法），无法知道这个类依赖哪些组件。这使得单元测试变得困难（必须使用Spring容器或反射来注入依赖，无法通过构造器或Setter手动注入Mock）。
     *   **与容器强耦合：** 字段注入高度依赖于Spring容器。如果你想在非Spring环境中复用这个类（例如，在普通Java应用中手动`new`一个实例），将无法初始化这些依赖字段，因为它们不会被自动注入。
     *   **难以进行依赖检查：** 对于必需的依赖，如果容器找不到合适的Bean来注入，错误只会在运行时（实际使用该字段时）才暴露（可能抛出`NullPointerException`）。而构造器注入在启动时就能发现缺失依赖。
+   
 <div class="markdown-table-wrapper"><table><thead><tr><th>特性</th><th>构造器注入</th><th>Setter注入</th><th>字段注入</th></tr></thead><tbody><tr><td><strong>实现方式</strong></td><td>通过构造函数参数</td><td>通过Setter方法</td><td>直接在字段上添加注解</td></tr><tr><td><strong>代码示例</strong></td><td><code>public A(B b) { this.b=b; }</code></td><td><code>public void setB(B b) {...}</code></td><td><code>@Autowired private B b;</code></td></tr><tr><td><strong>不可变性</strong></td><td>✅ (字段可声明final)</td><td>❌</td><td>❌</td></tr><tr><td><strong>对象完整性</strong></td><td>✅ (创建即完整状态)</td><td>❌ (可能处于部分初始化状态)</td><td>❌</td></tr><tr><td><strong>循环依赖检测</strong></td><td>✅ (启动时报错)</td><td>⚠️ (Spring可处理)</td><td>⚠️ (Spring可处理)</td></tr><tr><td><strong>可测试性</strong></td><td>✅ (无需框架即可测试)</td><td>✅</td><td>❌ (需反射或Spring容器)</td></tr><tr><td><strong>Null安全性</strong></td><td>✅ (强制依赖非空)</td><td>❌ (可能漏注入)</td><td>❌</td></tr><tr><td><strong>推荐度</strong></td><td>⭐⭐⭐⭐ (Spring官方推荐)</td><td>⭐⭐⭐</td><td>⭐ (不推荐)</td></tr></tbody></table></div>
-
 ## 三、详细解析与代码示例
-### 1.构造器注入（Constructor Injection）
-    ```java
-    @Component
-    public class OrderService {
-        private final PaymentGateway paymentGateway; // final确保不变性
-        private final InventoryService inventoryService;
+### 1.构造器注入（Constructor Injection）  
+```java
+@Component
+public class OrderService {
+    private final PaymentGateway paymentGateway; // final确保不变性
+    private final InventoryService inventoryService;
 
-        // 构造器注入（Spring 4.3+ 可省略@Autowired）
-        @Autowired
-        public OrderService(PaymentGateway paymentGateway, 
-                            InventoryService inventoryService) {
-            this.paymentGateway = paymentGateway;
-            this.inventoryService = inventoryService;
-        }
+    // 构造器注入（Spring 4.3+ 可省略@Autowired）
+    @Autowired
+    public OrderService(PaymentGateway paymentGateway, 
+                        InventoryService inventoryService) {
+        this.paymentGateway = paymentGateway;
+        this.inventoryService = inventoryService;
     }
-    ```
+}
+```
 *   **优点**
     *   **强制依赖**：确保对象创建时所有必需依赖已就绪
     *   **线程安全**：依赖字段可声明为final
@@ -161,26 +160,29 @@ Spring支持三种主要的依赖注入方式：
     *   **清晰可见**：通过构造函数明确依赖关系
 *   **缺点**
     *   参数较多时影响可读性（可能是代码坏味道）
-### 2.Setter注入（Setter Injection）
-    ```java
-    @Component
-    public class UserService {
-        private UserRepository userRepository;
-        private EmailService emailService;
+### 2.Setter注入（Setter Injection）  
+```java
 
-        // Setter注入（可选依赖）
-        @Autowired
-        public void setUserRepository(UserRepository userRepository) {
-            this.userRepository = userRepository;
-        }
+@Component
+public class UserService {
+    private UserRepository userRepository;
+    private EmailService emailService;
 
-        // 另一个Setter
-        @Autowired(required = false) // 非必需依赖
-        public void setEmailService(EmailService emailService) {
-            this.emailService = emailService;
-        }
+    // Setter注入（可选依赖）
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
-    ```
+
+    // 另一个Setter
+    @Autowired(required = false) // 非必需依赖
+    public void setEmailService(EmailService emailService) {
+        this.emailService = emailService;
+    }
+}
+
+```
+
 *   **优点**：
     *   **灵活性**：支持可选依赖（required=false）
     *   **可重新注入**：允许运行时更换实现
@@ -189,17 +191,17 @@ Spring支持三种主要的依赖注入方式：
     *   对象可能处于不完整状态
     *   需手动检查依赖是否初始化
     *   线程安全问题（非final字段）
-### 3.字段注入（Field Injection）
-    ```java
-    @Component
-    public class ProductService {
-        @Autowired  // 不推荐！
-        private ProductRepository productRepository;
-        
-        @Autowired
-        private DiscountCalculator discountCalculator;
-    }
-    ```
+### 3.字段注入（Field Injection）  
+```java
+@Component
+public class ProductService {
+    @Autowired  // 不推荐！
+    private ProductRepository productRepository;
+    
+    @Autowired
+    private DiscountCalculator discountCalculator;
+}
+```
 *   **优点**：
     *   代码简洁（无样板代码）
 *   **致命缺点**：
@@ -248,7 +250,6 @@ Spring支持三种主要的依赖注入方式：
         }
     }
     ```    
-
 ## 五、最佳实践建议
 | 特性               | 构造器注入 (Constructor Injection)         | Setter注入 (Setter Injection)              | 字段注入 (Field Injection)               |
 | :----------------- | :---------------------------------------- | :---------------------------------------- | :--------------------------------------- |
