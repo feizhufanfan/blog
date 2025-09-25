@@ -270,19 +270,6 @@ your_username your_secure_password
 保存退出后赋予root只读权限
 `sudo chmod 0400 /etc/openvpn/psw-file`
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ##  配置网络防火墙
 ### 1.  启用IP转发
 编辑 /etc/sysctl.conf 文件，取消注释或添加以下行。
@@ -296,9 +283,9 @@ sudo sysctl -p
 ![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922112748.png)
 
 ### 2.  配置防火墙（如果使用ufw）
-- 允许OpenVPN端口（例如默认的1194 UDP）
+- 允许OpenVPN端口（例如默认的1149 UDP）
 ```bash
-sudo ufw allow 1194/udp
+sudo ufw allow 1149/udp
 ```
 - 配置NAT规则，使客户端能通过VPN服务器访问互联网（假设你的服务器公网网卡是 eth0）
 ```bash
@@ -309,7 +296,7 @@ sudo vim /etc/ufw/before.rules
 ```text
 *nat
 :POSTROUTING ACCEPT [0:0]
--A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+-A POSTROUTING -s 172.168.0.0/24 -o eth0 -j MASQUERADE
 COMMIT
 ```
 - 还需修改 /etc/default/ufw，将 DEFAULT_FORWARD_POLICY 从 DROP 改为 ACCEPT
