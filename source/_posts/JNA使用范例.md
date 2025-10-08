@@ -12,7 +12,7 @@ tags:
 <h1 style="text-align:center;">JNA使用范例</h1>
 
 ## JAVA、C++变量映射表
-![JAVA/Native 变量类型转换](http://blog.feizhufanfan.top:18088/minio/images/blog/20230209134103.png)
+![JAVA/Native 变量类型转换](https://blog.feizhufanfan.top:18088/minio/images/blog/20230209134103.png)
 
 
 ##  C++端程序示例生产DLL/SO库
@@ -413,7 +413,7 @@ public class SDKLibrary{
 ```
 
 
-![项目结构](http://blog.feizhufanfan.top:18088/minio/images/blog/20230209154111.png)  
+![项目结构](https://blog.feizhufanfan.top:18088/minio/images/blog/20230209154111.png)  
 
 ```java
 

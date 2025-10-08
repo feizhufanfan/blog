@@ -27,7 +27,7 @@ Fail2ban 是一款用于防止暴力破解和恶意登录尝试的开源工具�
 
 
 如果出现以下内容则表示`ufw`启动且运行。
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250813132304.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250813132304.png)
 
 ### 安装fail2ban
 1.  更新源
@@ -69,7 +69,7 @@ Fail2ban 是一款用于防止暴力破解和恶意登录尝试的开源工具�
     backend = %(sshd_backend)s
     ```
 
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250813133014.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250813133014.png)
 
 **说明**:
     -   enabled : 启用该规则
@@ -77,7 +77,7 @@ Fail2ban 是一款用于防止暴力破解和恶意登录尝试的开源工具�
     -   findtime : 查找时间 s、m、h、d 默认为秒
     -   bantime : 禁止ip时间
 
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250813133444.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250813133444.png)
 
 1.  启动fail2ban
 ```bash
@@ -86,5 +86,5 @@ sudo systemctl enable fail2ban.service # 设置开机启动
 sudo systemctl status fail2ban.service # 查看服务运行状态
 ```
 以下表示运行中:
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250813134426.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250813134426.png)
 

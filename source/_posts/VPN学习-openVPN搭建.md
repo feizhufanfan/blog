@@ -18,7 +18,7 @@ tags:
 sudo apt update
 sudo apt install openvpn
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921224525.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921224525.png)
 
 #### 安装 **[easy-rsa](https://github.com/OpenVPN/easy-rsa/releases/download/v3.2.4/EasyRSA-3.2.4.tgz)**
 1.  下载`Easy-rsa`包
@@ -26,7 +26,7 @@ sudo apt install openvpn
 mkdir -p ~/Download && cd ~/Download
 wget https://github.com/OpenVPN/easy-rsa/releases/download/v3.2.4/EasyRSA-3.2.4.tgz
 ```
-![下载Easy-rsa](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921225147.png)
+![下载Easy-rsa](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921225147.png)
 
 1.  将`Easy-rsa`添加到环境变量
 ```bash
@@ -38,9 +38,9 @@ echo "export EASYRSA_HOME=$(pwd)" >> ~/.bashrc
 echo 'export PATH=$PATH:$EASYRSA_HOME' >> ~/.bashrc
 source ~/.bashrc
 ```
-![解压Esay包](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921230008.png)
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921230646.png)
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921230748.png)
+![解压Esay包](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921230008.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921230646.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921230748.png)
 
 出现以上结果说明添加到环境变量成功。
 
@@ -52,7 +52,7 @@ source ~/.bashrc
 cd ~
 easyrsa init-pki
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921231237.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921231237.png)
 - 填写证书信息
 ```bash
 cp pki/vars.example pki/vars
@@ -70,21 +70,21 @@ set_var EASYRSA_REQ_OU          "Tongji"
 #保存内容
 :wq
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921232002.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921232002.png)
 
 再次执行初始化命令确认配置文件正确导入
 ```bash
 easyrsa init-pki
 no
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921232203.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921232203.png)
 
 #### 2. 构建CA  
 在执行此命令时，系统会提示您输入 CA 的通用名称（Common Name）。您可以直接按 Enter 键接受默认名称也可以根据自身情况修改名称。
 ```bash
 easyrsa build-ca nopass
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921232847.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921232847.png)
 
 此命令会创建两个重要文件：pki/ca.crt (CA 公共证书) 和 pki/private/ca.key (CA 私钥)。
 
@@ -94,7 +94,7 @@ easyrsa build-ca nopass
 ```bash
 easyrsa gen-req server nopass
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921233328.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921233328.png)
 同样，系统会提示输入通用名称，可以直接按 Enter 键。
 
 #### 2. 签署服务器证书：
@@ -103,7 +103,7 @@ easyrsa gen-req server nopass
 easyrsa sign-req server server
 ```
 在提示确认时，输入 yes 并按 Enter。
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250921233719.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250921233719.png)
 初始生成的时候可能会应为权限问题导致一个文件生成失败，我们手动创建一个。
 ```bash
 # 我们将之前生成的服务器证书删除重新生成
@@ -112,7 +112,7 @@ rm pki/issued/server.crt
 easyrsa sign-req server server
 yes
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922001014.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922001014.png)
 
 #### 3. 生成 Diffie-Hellman 参数
 这用于密钥交换。
@@ -120,9 +120,9 @@ yes
 easyrsa gen-dh
 ```
 这里的密钥生成需要花费一些时间，等待完成即可
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922001313.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922001313.png)
 密钥生成完成。
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922001523.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922001523.png)
 
 #### 4. 生成 TLS 认证密钥
 这可以增加额外的安全层，以防止 DoS 攻击。
@@ -145,7 +145,7 @@ sudo cp ta.key /etc/openvpn/
 ```bash
 easyrsa gen-req client1 nopass
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922002443.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922002443.png)
 
 #### 2. 签署客户端证书：
 
@@ -154,7 +154,7 @@ easyrsa sign-req client client1
 yes
 ```
 同样，输入 yes 进行确认。
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922002654.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922002654.png)
 ***重要提示：*** 您需要将以下文件安全地分发给客户端：
 - `pki/ca.crt`
 - `pki/issued/client1.crt`
@@ -280,7 +280,7 @@ net.ipv4.ip_forward=1
 ```bash
 sudo sysctl -p
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922112748.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922112748.png)
 
 ### 2.  配置防火墙（如果使用ufw）
 - 允许OpenVPN端口（例如默认的1149 UDP）
@@ -327,7 +327,7 @@ sudo systemctl enable openvpn.service
 ```bash
 sudo systemctl status openvpn.service
 ```
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922130549.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922130549.png)
 
 ### 4.  查看日志是否有错误
 ```bash
@@ -409,13 +409,13 @@ cat ${BASE_CONFIG} \
 
 #### 5. 生成客户端配置文件。
 确认目录下文件是否都准备就绪。
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922124936.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922124936.png)
 执行命令
 ```bash
 sh ./generateConfig.sh client1
 ```
 目录下生成`client1.ovpn`
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922125128.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922125128.png)
 
 
 ## 测试OpenVPN服务
@@ -424,15 +424,15 @@ sh ./generateConfig.sh client1
 从服务器下载`client1.ovpn`到本地。
 ### 导入配置文件
 将文件拖入或者选择位置导入。
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922130749.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922130749.png)
 导入成功后
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922131455.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922131455.png)
 输入之前创建的用户名
 点击connect
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922131543.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922131543.png)
 输入用户密码
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922142256.png)
-![](http://blog.feizhufanfan.top:18088/minio/images/blog/20250922141907.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922142256.png)
+![](https://blog.feizhufanfan.top:18088/minio/images/blog/20250922141907.png)
 
 
 
